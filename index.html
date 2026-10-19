@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a14">
+<title>THE Z MUSIC</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#07070d;
+  --bg2:#0d0d1a;
+  --surface:#13131f;
+  --surface2:#191928;
+  --surface3:#1f1f33;
+  --line:#2a2a42;
+  --text:#f5f5fb;
+  --muted:#8e8ead;
+  --muted2:#6b6b8a;
+  --violet:#8b5cf6;
+  --violet2:#a78bfa;
+  --pink:#ec4899;
+  --indigo:#4f46e5;
+  --grad:linear-gradient(135deg,var(--violet) 0%,var(--pink) 100%);
+  --grad-soft:linear-gradient(135deg,#8b5cf633,#ec489933);
+  --radius:18px;
+  --shadow:0 20px 60px -20px #00000090;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Segoe UI",system-ui,-apple-system,"Cairo","Tajawal",sans-serif;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -5%,#5b21b64a 0%,transparent 55%),
+    radial-gradient(ellipse 700px 500px at 100% 10%,#be185d3d 0%,transparent 50%),
+    radial-gradient(ellipse 900px 600px at 50% 120%,#4338ca33 0%,transparent 55%),
+    var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding-bottom:110px;
+}
+
+/* ===== Top bar ===== */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  backdrop-filter:blur(18px);
+  background:#07070dcc;
+  border-bottom:1px solid #ffffff0f;
+}
+.topbar-inner{max-width:1100px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brandblock{display:flex;align-items:center;gap:11px}
+.logo{
+  width:42px;height:42px;border-radius:13px;flex:0 0 42px;
+  background:var(--grad);
+  display:grid;place-items:center;font-size:19px;font-weight:800;color:#fff;
+  box-shadow:0 6px 20px -4px #ec489966;
+}
+.brandtext{display:flex;flex-direction:column;line-height:1.25}
+.brandtitle{font-weight:800;font-size:17px;letter-spacing:.3px}
+.brandsub{font-size:10.5px;color:var(--muted2);letter-spacing:1.5px;font-weight:600}
+.statusdot{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.statusdot span.dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d399aa}
+
+/* ===== Hero ===== */
+.wrap{max-width:1100px;margin:auto;padding:0 16px}
+.hero{
+  position:relative;overflow:hidden;
+  margin-top:20px;border-radius:26px;padding:34px 28px;
+  background:
+    radial-gradient(ellipse 500px 300px at 85% -20%,#ec489955,transparent 60%),
+    linear-gradient(135deg,#1b0f3a,#2a0f2e 55%,#120a2e);
+  border:1px solid #ffffff14;
+  box-shadow:var(--shadow);
+}
+.hero-eyebrow{font-size:12px;color:var(--violet2);font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:8px}
+.hero-eyebrow:before{content:"";width:16px;height:2px;background:var(--grad);border-radius:2px}
+.hero h1{font-size:clamp(26px,5vw,40px);margin:14px 0 8px;line-height:1.2;font-weight:800}
+.hero p{margin:0;max-width:580px;color:#cfc9e8;font-size:15px;line-height:1.7}
+.hero-stats{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap}
+.statbox{display:flex;flex-direction:column;gap:2px}
+.statnum{font-size:21px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.statlabel{font-size:11.5px;color:var(--muted)}
+
+/* ===== Layout ===== */
+.layout{display:grid;grid-template-columns:1fr 340px;gap:20px;margin-top:22px}
+.panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px;
+}
+.panelhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.panelhead h2{font-size:16.5px;margin:0;font-weight:700}
+.muted{color:var(--muted);font-size:12.5px}
+.ghostbtn{
+  background:var(--surface2);border:1px solid var(--line);color:var(--text);
+  border-radius:12px;padding:9px 13px;font-size:13px;cursor:pointer;
+  display:flex;align-items:center;gap:6px;transition:.15s;font-weight:600;
+}
+.ghostbtn:hover{background:var(--surface3);border-color:#ffffff22}
+
+/* ===== Search ===== */
+.searchrow{display:flex;gap:9px;margin-bottom:16px}
+.searchbox{position:relative;flex:1}
+.searchbox svg{position:absolute;right:13px;top:50%;transform:translateY(-50%);opacity:.5;pointer-events:none}
+.input{
+  width:100%;font:inherit;border:1px solid var(--line);background:var(--surface2);color:var(--text);
+  border-radius:13px;padding:12px 40px 12px 14px;outline:none;transition:.15s;font-size:14px;
+}
+.input:focus{border-color:var(--violet);box-shadow:0 0 0 3px #8b5cf62e}
+.input::placeholder{color:var(--muted2)}
+.clearbtn{
+  background:var(--surface2);border:1px solid var(--line);color:var(--muted);
+  border-radius:13px;padding:0 15px;cursor:pointer;font-size:13px;font-weight:600;transition:.15s;
+}
+.clearbtn:hover{color:var(--text);border-color:#ffffff22}
+
+/* ===== Track list ===== */
+.tracklist{display:flex;flex-direction:column;gap:6px;max-height:560px;overflow-y:auto;margin:-4px;padding:4px}
+.tracklist::-webkit-scrollbar{width:6px}
+.tracklist::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:3px}
+.track{
+  display:flex;align-items:center;gap:13px;padding:10px 12px;border-radius:14px;
+  background:transparent;border:1px solid transparent;cursor:pointer;transition:.15s;position:relative;
+}
+.track:hover{background:var(--surface2);border-color:#ffffff10}
+.track.active{background:linear-gradient(90deg,#8b5cf61f,#ec48991a);border-color:#8b5cf64a}
+.trackidx{width:22px;flex:0 0 22px;text-align:center;font-size:12px;color:var(--muted2);font-variant-numeric:tabular-nums}
+.track.active .trackidx{color:transparent;position:relative}
+.track.active .trackidx:after{
+  content:"";position:absolute;inset:0;margin:auto;width:13px;height:13px;
+  background:var(--grad);mask:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 10h2v4H3zm4-3h2v10H7zm4-4h2v18h-2zm4 6h2v6h-2zm4-3h2v12h-2z"/></svg>') center/contain no-repeat;
+}
+.cover{
+  width:42px;height:42px;flex:0 0 42px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#2d2254,#4a1942);font-size:17px;color:#d8c8ff;overflow:hidden;
+}
+.trackinfo{min-width:0;flex:1}
+.trackname{font-weight:600;font-size:13.8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)}
+.track.active .trackname{color:var(--violet2)}
+.trackmeta{font-size:11.5px;color:var(--muted2);margin-top:2px}
+.actions{display:flex;gap:4px;opacity:0;transition:.15s}
+.track:hover .actions,.track.active .actions{opacity:1}
+.iconbtn{
+  width:33px;height:33px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);
+  color:var(--text);cursor:pointer;display:grid;place-items:center;transition:.15s;flex:0 0 33px;
+}
+.iconbtn:hover{background:var(--surface3);border-color:#ffffff28;transform:translateY(-1px)}
+.empty{padding:38px 14px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px;font-size:13.5px;line-height:1.8}
+.status{font-size:12px;color:var(--violet2);margin-top:12px;min-height:16px}
+
+/* ===== Now playing side panel ===== */
+.now{position:sticky;top:78px}
+.disc-wrap{display:flex;justify-content:center;margin:6px 0 20px}
+.disc{
+  width:150px;height:150px;border-radius:50%;
+  background:repeating-radial-gradient(circle,#0c0c14 0 4px,#1b1b2c 5px 8px);
+  display:grid;place-items:center;box-shadow:0 18px 45px -12px #000a;position:relative;
+  border:1px solid #ffffff10;
+}
+.disc:before{
+  content:"";width:50px;height:50px;border-radius:50%;background:var(--grad);
+  border:5px solid #0c0c14;box-shadow:0 0 0 1px #ffffff14;
+}
+.disc.playing{animation:spin 5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nowbadge{text-align:center;font-size:10.5px;letter-spacing:1.5px;color:var(--muted2);font-weight:700;margin-bottom:6px}
+.nowtitle{text-align:center;font-weight:700;font-size:16px;overflow-wrap:anywhere;padding:0 6px}
+.nowartist{text-align:center;color:var(--muted);font-size:12.5px;margin-top:5px}
+.controls{display:flex;justify-content:center;align-items:center;gap:14px;margin:22px 0 14px}
+.ctrlbtn{
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface2);
+  color:var(--text);cursor:pointer;display:grid;place-items:center;transition:.15s;font-size:15px;
+}
+.ctrlbtn:hover{background:var(--surface3);border-color:#ffffff28}
+.playmain{
+  width:58px;height:58px;border-radius:50%;font-size:20px;border:0;
+  background:var(--grad);color:#fff;box-shadow:0 10px 30px -8px #ec489977;
+}
+.playmain:hover{transform:scale(1.05);box-shadow:0 12px 34px -6px #ec489999}
+.progress{
+  width:100%;appearance:none;height:5px;border-radius:3px;background:var(--surface3);outline:none;cursor:pointer;
+}
+.progress::-webkit-slider-thumb{appearance:none;width:13px;height:13px;border-radius:50%;background:var(--violet2);box-shadow:0 0 0 4px #8b5cf633;cursor:pointer}
+.progress::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--violet2);border:0;box-shadow:0 0 0 4px #8b5cf633;cursor:pointer}
+.time{display:flex;justify-content:space-between;font-size:11px;color:var(--muted2);margin-top:6px;font-variant-numeric:tabular-nums}
+.divider{height:1px;background:var(--line);margin:18px 0}
+.sidehint{font-size:12.5px;line-height:1.8;color:var(--muted);display:flex;gap:9px;align-items:flex-start}
+.sidehint .hiconwrap{flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:var(--grad-soft);display:grid;place-items:center;font-size:13px}
+.badge{font-size:10.5px;padding:5px 10px;border-radius:999px;background:var(--grad-soft);color:var(--violet2);white-space:nowrap;font-weight:700;letter-spacing:.5px;border:1px solid #8b5cf633}
+
+/* ===== Sticky mini player for mobile ===== */
+.mobileplayer{display:none}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .now{position:static}
+  body{padding-bottom:100px}
+}
+@media(max-width:620px){
+  .hero{padding:24px 18px}
+  .hero-stats{gap:16px}
+  .wrap{padding:0 12px}
+  .panel{padding:15px}
+  .track{padding:9px 8px}
+  .trackidx{display:none}
+}
+
+.foot{text-align:center;color:var(--muted2);font-size:11.5px;margin-top:26px;padding-bottom:10px;line-height:1.8}
+.foot b{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brandblock">
+      <div class="logo">♫</div>
+      <div class="brandtext">
+        <div class="brandtitle">THE Z MUSIC</div>
+        <div class="brandsub">BY THE ZYZ STUDIO</div>
+      </div>
+    </div>
+    <div class="statusdot"><span class="dot"></span><span id="libCountTop">—</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-eyebrow">THE ZYZ STUDIO PRESENTS</div>
+    <h1>موسيقاك، في مكان واحد.</h1>
+    <p>استعرض الأغاني الموجودة على السيرفر، شغّلها مباشرة، أو نزّلها إلى جهازك للاستماع إليها لاحقًا دون إنترنت.</p>
+    <div class="hero-stats">
+      <div class="statbox"><div class="statnum" id="statCount">0</div><div class="statlabel">أغنية متاحة</div></div>
+      <div class="statbox"><div class="statnum">∞</div><div class="statlabel">استماع بلا حدود</div></div>
+      <div class="statbox"><div class="statnum">HD</div><div class="statlabel">جودة الصوت</div></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panelhead">
+        <div><h2>مكتبة الموسيقى</h2><div class="muted" id="count">جارٍ تحميل الأغاني…</div></div>
+        <button class="ghostbtn" id="refresh">↻ تحديث</button>
+      </div>
+      <div class="searchrow">
+        <div class="searchbox">
+          <input class="input" id="search" placeholder="ابحث باسم الأغنية…" aria-label="ابحث باسم الأغنية">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <button class="clearbtn" id="clear">مسح</button>
+      </div>
+      <div class="tracklist" id="tracks"><div class="empty">جارٍ قراءة مكتبة الموسيقى…</div></div>
+      <div class="status" id="libraryStatus" role="status"></div>
+    </section>
+
+    <aside class="panel now">
+      <div class="panelhead"><h2>يُشغّل الآن</h2><span class="badge">PLAYER</span></div>
+      <div class="disc-wrap"><div class="disc" id="disc"></div></div>
+      <div class="nowbadge">NOW PLAYING</div>
+      <div class="nowtitle" id="nowTitle">اختر أغنية من المكتبة</div>
+      <div class="nowartist" id="nowMeta">MP3 • WAV • OGG • M4A وغيرها</div>
+      <audio id="audio" preload="metadata"></audio>
+      <div class="controls">
+        <button class="ctrlbtn" id="prev" title="الأغنية السابقة">⏮</button>
+        <button class="playmain" id="toggle" title="تشغيل أو إيقاف">▶</button>
+        <button class="ctrlbtn" id="next" title="الأغنية التالية">⏭</button>
+      </div>
+      <input class="progress" id="progress" type="range" min="0" max="1000" value="0" aria-label="موضع التشغيل">
+      <div class="time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+      <div class="divider"></div>
+      <div class="sidehint">
+        <div class="hiconwrap">⬇</div>
+        <div><b style="color:var(--text)">للاستماع دون إنترنت:</b> اضغط زر التنزيل بجانب الأغنية. بعد اكتمال التنزيل، افتح الملف من مجلد التنزيلات على جهازك — سيعمل دون الحاجة إلى هذا السيرفر.</div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="foot">THE Z MUSIC · <b>BY THE ZYZ STUDIO</b> · ضع ملفات الصوت بجانب ملفات المشروع في GitHub ثم أعد النشر على Render.</footer>
+</div>
+
+<script>
+const audio=document.getElementById('audio'), tracksEl=document.getElementById('tracks');
+let tracks=[], current=-1;
+const $=id=>document.getElementById(id);
+function fmt(s){if(!Number.isFinite(s)||s<0)return '0:00';return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0')}
+function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+ const q=$('search').value.trim().toLowerCase();
+ const visible=tracks.map((t,i)=>({...t,index:i})).filter(t=>t.name.toLowerCase().includes(q));
+ $('count').textContent=`${tracks.length} أغنية متاحة`;
+ $('libCountTop').textContent=`${tracks.length} أغنية`;
+ $('statCount').textContent=tracks.length;
+ if(!visible.length){tracksEl.innerHTML=`<div class="empty">${tracks.length?'لا توجد نتائج مطابقة للبحث.':'لم يتم العثور على ملفات موسيقى. أضف ملفات صوت إلى مجلد المشروع ثم أعد النشر.'}</div>`;return}
+ tracksEl.innerHTML=visible.map(t=>`<div class="track${t.index===current?' active':''}" data-row="${t.index}"><div class="trackidx">${t.index+1}</div><div class="cover">♫</div><div class="trackinfo"><div class="trackname" title="${safeText(t.name)}">${safeText(t.name)}</div><div class="trackmeta">${safeText(t.ext.toUpperCase())} · ملف صوتي</div></div><div class="actions"><button class="iconbtn" data-play="${t.index}" title="تشغيل">▶</button><button class="iconbtn" data-download="${t.index}" title="تنزيل">⬇</button></div></div>`).join('');
+ tracksEl.querySelectorAll('[data-row]').forEach(row=>row.addEventListener('click',(e)=>{if(e.target.closest('[data-download]'))return;playTrack(Number(row.dataset.row))}));
+ tracksEl.querySelectorAll('[data-download]').forEach(b=>b.addEventListener('click',(e)=>{e.stopPropagation();const t=tracks[Number(b.dataset.download)];if(t)location.href=t.downloadUrl}));
+}
+async function loadTracks(){
+ $('libraryStatus').textContent='';tracksEl.innerHTML='<div class="empty">جارٍ تحميل المكتبة…</div>';
+ try{const r=await fetch('/api/tracks',{cache:'no-store'});if(!r.ok)throw new Error('تعذّر الاتصال بالسيرفر');const data=await r.json();tracks=data.tracks||[];render();if(!tracks.length)$('libraryStatus').textContent='تأكد من رفع ملفات MP3 أو WAV أو OGG أو M4A أو FLAC أو AAC أو OPUS إلى GitHub.'}
+ catch(e){tracks=[];render();$('libraryStatus').textContent='تعذّر تحميل الأغاني. تأكد من أن السيرفر يعمل ثم حدّث الصفحة.'}
+}
+function playTrack(i){
+ if(i<0||i>=tracks.length)return;current=i;const t=tracks[i];
+ audio.src=t.streamUrl;$('nowTitle').textContent=t.name;$('nowMeta').textContent=t.ext.toUpperCase()+' · THE Z MUSIC';
+ render();
+ audio.play().then(()=>{$('toggle').textContent='Ⅱ';$('disc').classList.add('playing')}).catch(()=>{$('toggle').textContent='▶';$('libraryStatus').textContent='اضغط زر التشغيل مرة أخرى إذا منع المتصفح التشغيل التلقائي.'});
+}
+$('toggle').addEventListener('click',()=>{if(!audio.src){if(tracks.length)playTrack(0);return}if(audio.paused)audio.play().catch(()=>{});else audio.pause()});
+$('prev').addEventListener('click',()=>{if(tracks.length)playTrack((current-1+tracks.length)%tracks.length)});
+$('next').addEventListener('click',()=>{if(tracks.length)playTrack((current+1)%tracks.length)});
+audio.addEventListener('play',()=>{$('toggle').textContent='Ⅱ';$('disc').classList.add('playing')});
+audio.addEventListener('pause',()=>{$('toggle').textContent='▶';$('disc').classList.remove('playing')});
+audio.addEventListener('ended',()=>{if(tracks.length)playTrack((current+1)%tracks.length)});
+audio.addEventListener('timeupdate',()=>{$('currentTime').textContent=fmt(audio.currentTime);$('duration').textContent=fmt(audio.duration);if(Number.isFinite(audio.duration)&&audio.duration>0)$('progress').value=audio.currentTime/audio.duration*1000});
+$('progress').addEventListener('input',()=>{if(Number.isFinite(audio.duration)&&audio.duration>0)audio.currentTime=Number($('progress').value)/1000*audio.duration});
+$('search').addEventListener('input',render);$('clear').addEventListener('click',()=>{$('search').value='';render()});$('refresh').addEventListener('click',loadTracks);
+loadTracks();
+</script>
+</body>
+</html>
